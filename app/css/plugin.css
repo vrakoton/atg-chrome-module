@@ -1,0 +1,46 @@
+body {
+  min-width: 300px;
+  overflow-x: hidden;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 0.8em;
+  color: #0F0F0F;
+}
+
+img {
+  margin: 5px;
+  border: 2px solid black;
+  vertical-align: middle;
+  width: 75px;
+  height: 75px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin: 0px, 0px, 30px, 0px;
+}
+
+.module-help { 
+  margin: 30px, 0px, 30px, 0px;
+}
+
+.floating-help {
+  background-color: #E9ECF0;
+  width: 300px;
+  float: right;
+  color: black;
+  padding: 20px;
+  border: 2px solid;
+  border-color: #D5DFEB;
+}
+
+.help-subtitle {
+  margin: 10px 0px 10px 0px;
+}
+  
+.help-text {
+  font-size: 0.9em;
+  margin: 0px 0px 0px 10px;
+}
