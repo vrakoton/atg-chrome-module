@@ -1,5 +1,6 @@
+'use strict';
 /*
-    ATG Browser module 
+    ATG Browser module
     Copyright (C) 2014  Vina Rakotondrainibe
 
     This program is free software; you can redistribute it and/or modify
@@ -15,12 +16,12 @@
     You should have received a copy of the GNU General Public License along
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-    
+
     Author: vrakoton
     Version: 1.0
-    
+
     Description:
-      Common callbacks functions for the content script extension. if you need generic 
+      Common callbacks functions for the content script extension. if you need generic
       behaviour for some page part in the admin console, this is the place to put them.
 */
 
@@ -38,14 +39,14 @@ var addItemEndTag = '</add-item>';
 *   this function positions all common callback on atg module artifacts (ex: on help close button)
 */
 $(function() {
-  
+
   // --- create the help div
   createFloatingHelp();
-  
+
   // --- close help button link
   $('.module-help').click(
-    function() { 
-      $(this).fadeOut(); 
+    function() {
+      $(this).fadeOut();
     }
   );
   $('#close-module-help').click(
@@ -53,7 +54,7 @@ $(function() {
       $('#module-help').fadeOut();
     }
   );
-  
+
   $(document).keydown(
     function(e) {
       if (e.which == 18) {
@@ -67,15 +68,15 @@ $(function() {
           case 16:
             shiftmode = true;
             break;
-            
+
           // --- I key detected
           case 73:
             // --- cache invalidation
             if ($('[name="xmltext"]').length <= 0) break;
             $.ajax({
-              type: "POST",
+              type: 'POST',
               url: window.location.pathname,
-              data: { invokeMethod: "invalidateCaches", submit: "Invoke Method"}
+              data: { invokeMethod: 'invalidateCaches', submit: 'Invoke Method'}
             }).done(
               function(data) {
                 //console.log('received: ' + data);
@@ -92,23 +93,23 @@ $(function() {
             //altmode = false;
             //console.log('cache invalidating for repository');
             break;
-            
+
           // --- G key detected
           case 71:
             if(altmode && shiftmode) {
               // remove debug
-              changeProperty("loggingDebug", false, "Debug could not be turned off due to an error");
+              changeProperty('loggingDebug', false, 'Debug could not be turned off due to an error');
               resetControlKeys();
               break;
             }
-            
+
             if(altmode) {
               // enable debug
-              changeProperty("loggingDebug", true, "Debug could not be turned on due to an error");
+              changeProperty('loggingDebug', true, 'Debug could not be turned on due to an error');
               resetControlKeys();
               break;
             }
-            
+
           // --- L key detected
           case 76:
             if($('#atg-mod-repxml').length > 0) {

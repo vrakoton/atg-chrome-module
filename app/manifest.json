@@ -1,6 +1,6 @@
 {
     "name": "ATG Web Administration console chrome extension",
-    "version": "0.0.1",
+    "version": "0.0.6",
     "manifest_version": 2,
     "description": "Provides shortcuts and helpers for day to day developper and administrator operations",
     "icons": {
@@ -14,23 +14,23 @@
             "scripts/background.js"
         ]
     },
-  "content_scripts": [
-    {
-      "matches": [
-        "http://*/dyn/admin/*"
-      ],
-      "css": [
-        "css/plugin.css"
-      ],
-      "js": [
-        "scripts/jquery-1.11.1.min.js", 
-        "scripts/typeahead.js", 
-        "scripts/common-functions.js", 
-        "scripts/repository.js", 
-        "scripts/common-callbacks.js"
-      ],
-      "run_at": "document_end",
-      "all_frames": false
-    }
-  ]
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*/dyn/admin/*"
+            ],
+            "css": [
+                "css/plugin.css"
+            ],
+            "js": [
+                "scripts/jquery-1.11.1.min.js",
+                "scripts/typeahead.js",
+                "scripts/common-functions.js",
+                "scripts/repository.js",
+                "scripts/common-callbacks.js"
+            ],
+            "run_at": "document_end",
+            "all_frames": false
+        }
+    ]
 }

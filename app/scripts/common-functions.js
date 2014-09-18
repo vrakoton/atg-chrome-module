@@ -1,5 +1,6 @@
+'use strict';
 /*
-    ATG Browser module 
+    ATG Browser module
     Copyright (C) 2014  Vina Rakotondrainibe
 
     This program is free software; you can redistribute it and/or modify
@@ -15,15 +16,15 @@
     You should have received a copy of the GNU General Public License along
     with this program; if not, write to the Free Software Foundation, Inc.,
     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
-    
+
     Author: vrakoton
     Version: 1.0
-    
+
     Description:
-      Common function for all module routines. This file should be included before all other custom JS scripts 
+      Common function for all module routines. This file should be included before all other custom JS scripts
 */
 
-/* 
+/*
 * Sets cursor position in an input field
 */
 $.fn.setCursorPosition = function(pos) {
@@ -47,7 +48,7 @@ $.fn.setCursorPosition = function(pos) {
 $.fn.setCursorPositionToNextParam = function() {
   var currVal = $(this).val();
   var index = currVal.indexOf("param");
-  
+
   if (index >= 0) {
     $(this).val(currVal.replace("param", ""));
     $(this).setCursorPosition(index);
@@ -67,17 +68,17 @@ var substringMatcher = function(strs) {
     if (tokens) {
       q = tokens[tokens.length - 1];
     }
-    
+
     // --- q: the entered text
     // --- cb: the render callback function from typeahead
     var matches, substrRegex;
- 
+
     // an array that will be populated with substring matches
     matches = [];
- 
+
     // regex used to determine if a string contains the substring `q`
     substrRegex = new RegExp(q, 'i');
- 
+
     // iterate through the pool of strings and for any string that
     // contains the substring `q`, add it to the `matches` array
     $.each(strs, function(i, str) {
@@ -87,7 +88,7 @@ var substringMatcher = function(strs) {
         matches.push({ value: str });
       }
     });
- 
+
     cb(matches);
   };
 };
@@ -127,6 +128,7 @@ var changeProperty = function (myprop, myvalue, errormsg) {
 * creates the help box in the page
 */
 var createFloatingHelp = function () {
+  /*jshint multistr: true */
   $('#oracleATGbrand').after('<div id="right-hand-help" class="floating-help"><b>Help On ATG Chrome plugin</b>\
   <div class="help-subtitle">Shortcuts:</div>\
   <div class="help-text">\
@@ -143,15 +145,15 @@ var addHelpText = function (title, text) {
   if ($('#right-hand-help').length <= 0) {
     return;
   }
-  
+
   var helpval = $('#right-hand-help').val();
-  
+
   if (title) {
     helpval += '<div class="help-subtitle">';
     helpval += title;
     helpval += '</div>';
   }
-  
+
   if (text) {
     helpval += '<div class="help-text">';
     helpval += text;

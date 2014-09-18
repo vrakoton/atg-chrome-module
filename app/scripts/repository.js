@@ -1,3 +1,4 @@
+'use strict';
 /*
     ATG Browser module 
     Copyright (C) 2014  Vina Rakotondrainibe
@@ -39,6 +40,8 @@ $('[name="xmltext"]').before(
 );
 
 $('#repxmldiv').append("<a id='repxml-field'><p><b>XML autompletion field:</b></p><textarea  rows='3' cols='80' id='atg-mod-repxml' name='atg-mod-repxml' placeholder='Type your instruction here... type help to display Help'>");
+
+/*jshint multistr: true */
 $('#repxmldiv').append(
   "<p><div id='module-help' name='module-help'> \
   Start to type your statement with '<', autocompletion suggestion should appear:<br>\
