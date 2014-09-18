@@ -293,7 +293,7 @@ module.exports = function (grunt) {
             }
         }
     });
-
+    
     grunt.registerTask('debug', function () {
         grunt.task.run([
             'jshint',
@@ -312,7 +312,6 @@ module.exports = function (grunt) {
         'clean:dist',
         'chromeManifest:dist',
         'useminPrepare',
-        'concurrent:dist',
         'cssmin',
         'concat',
         'uglify',
