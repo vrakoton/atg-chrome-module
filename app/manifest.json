@@ -17,7 +17,8 @@
     "content_scripts": [
         {
             "matches": [
-                "http://*/dyn/admin/*"
+                "http://*/dyn/admin/*",
+                "https://*/dyn/admin/*"
             ],
             "css": [
                 "css/plugin.css"
