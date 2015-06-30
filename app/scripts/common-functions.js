@@ -129,13 +129,19 @@ var changeProperty = function (myprop, myvalue, errormsg) {
 */
 var createFloatingHelp = function () {
   /*jshint multistr: true */
-  $('#oracleATGbrand').after('<div id="right-hand-help" class="floating-help"><b>Help On ATG Chrome plugin</b>\
+  var helptext = '<div id="right-hand-help" class="floating-help"><b>Help On ATG Chrome plugin</b>\
   <div class="help-subtitle">Shortcuts:</div>\
   <div class="help-text">\
   ALT+G: enables debug on current component<br>\
-  ALT+Shift+G: disables debug on current component<br>\
-  </div>\
-  </div>');
+  ALT+Shift+G: disables debug on current component<br>';
+
+  // --- we are on a repository page
+  if ($('[name="xmltext"]').length > 0) {
+    helptext += 'ALT+I: invalidates the repository cache';
+  }
+
+  helptext += '</div></div>';
+  $('#oracleATGbrand').after(helptext);
 };
 
 /*
@@ -160,4 +166,64 @@ var addHelpText = function (title, text) {
     helpval += '</div>';
   }
   $('#right-hand-help').val(helpval);
+};
+
+/**
+ * this function adds a unique id on some part of the admin page
+ * so we can manipulate data easily in our methods and callbacks
+ */
+var decoratePageWithIds = function() {
+  $("h1:contains('Methods')").next().attr("id", "method-table");
+};
+
+/**
+ * Creates the floating invocation input field
+ */
+var createFloatingMethodInvocation = function () {
+  $("#right-hand-help").append('<div class="floating-invocation">Method invocation:<br><br><input id="methodinvocationfield" type="text" size="40" placeholder="Type method name")></div>');
+  var methods = new Array();
+  $("#method-table tr").each(function (index, row) {
+    var $row = $(row);
+    if (index > 0) {
+      methods.push($row.find("td:first-child").text());
+    }
+  });
+  
+  if (!methods || methods.length == 0)
+    return;
+
+  $("#methodinvocationfield").typeahead({
+    hint: true,
+    highlight: true,
+    minLength: 1
+  },
+  {
+    name: 'methods',
+    displayKey: 'value',
+    source: substringMatcher(methods)
+  })
+  .on('typeahead:autocompleted', function(event, suggestion, dataset) {
+    console.log("autocompelted: launching method invocation");
+    var methodname = $(this).val();
+    // --- call method invocation
+    $.ajax({
+      type: 'POST',
+      url: window.location.pathname,
+      data: { invokeMethod: methodname, submit: 'Invoke Method'}
+    }).done(
+      function(data) {
+        //console.log('received: ' + data);
+        if (data.match('<tr><td>null</td><td>null</td></tr>')) {
+          alert('Method ' + methodname + ' invoked successfully');
+        }
+      }
+    ).fail(
+      function() {
+        alert('Method ' + methodname + ' could not be invoked');
+      }
+    );
+  })
+  .on('typeahead:select', function(event, suggestion) {
+    console.log("select: launching method invocation");
+  });
 };

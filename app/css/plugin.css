@@ -42,3 +42,25 @@ li {
   font-size: 0.9em;
   margin: 0px 0px 0px 10px;
 }
+
+.floating-invocation {
+  margin: 20px 0px 10px 0px;
+  width: 300px;
+}
+
+.tt-dropdown-menu {
+  background: white;
+  margin: 5px 0px 0px 0px;
+  padding: 5px 10px 0px 10px;
+  width: 290px;
+  box-shadow: 10px 10px 5px #D5DFEB;
+}
+
+.tt-cursor {
+  background-color: #000099!important;
+  color: #FFFFFF !important;
+}
+
+.tt-suggestion {
+  padding: 2px 2px 2px 10px;
+}

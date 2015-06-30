@@ -42,6 +42,9 @@ $(function() {
 
   // --- create the help div
   createFloatingHelp();
+  // -- add ids to part of the page so that our future manipulations are easier
+  decoratePageWithIds();
+  createFloatingMethodInvocation();
 
   // --- close help button link
   $('.module-help').click(
