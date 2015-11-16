@@ -1,6 +1,6 @@
 {
     "name": "ATG Web Administration console chrome extension",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "manifest_version": 2,
     "description": "Provides shortcuts and helpers for day to day developper and administrator operations",
     "icons": {

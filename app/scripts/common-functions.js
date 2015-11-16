@@ -202,28 +202,22 @@ var createFloatingMethodInvocation = function () {
     displayKey: 'value',
     source: substringMatcher(methods)
   })
-  .on('typeahead:autocompleted', function(event, suggestion, dataset) {
-    console.log("autocompelted: launching method invocation");
-    var methodname = $(this).val();
-    // --- call method invocation
+  .bind('typeahead:selected', function(event, suggestion, dataset) {
     $.ajax({
       type: 'POST',
       url: window.location.pathname,
-      data: { invokeMethod: methodname, submit: 'Invoke Method'}
+      data: { "shouldInvokeMethod": suggestion.value, "invokeMethod": suggestion.value, "submit": "Invoke Method"}
     }).done(
       function(data) {
         //console.log('received: ' + data);
         if (data.match('<tr><td>null</td><td>null</td></tr>')) {
-          alert('Method ' + methodname + ' invoked successfully');
+          alert('Method ' + suggestion +  ' called successfully');
         }
       }
     ).fail(
       function() {
-        alert('Method ' + methodname + ' could not be invoked');
+        alert('Could not call ' + suggestion);
       }
     );
-  })
-  .on('typeahead:select', function(event, suggestion) {
-    console.log("select: launching method invocation");
   });
 };
