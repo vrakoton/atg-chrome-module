@@ -46,6 +46,9 @@ $(function() {
   decoratePageWithIds();
   createFloatingMethodInvocation();
 
+  // --- add highlight.js
+  // addHighLightFeature();
+
   // --- close help button link
   $('.module-help').click(
     function() {
@@ -129,23 +132,9 @@ $(function() {
       }
     }
   );
-  
-  /**
-   * scroll the help sidebox automatically
-   */
-  var element = $('#floating-help');
-  var originalY = element.offset().top;
 
-    // Space between element and top of screen (when scrolling)
-    var topMargin = 20;
-
-    $(window).on('scroll', function(event) {
-        var scrollTop = $(window).scrollTop();
-
-        element.stop(false, false).animate({
-            top: scrollTop < originalY ? 0 : scrollTop - originalY + topMargin
-        }, 300);
-    });
-  
+  //highligh any code we find in the page
+  $('pre').each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
 });
-

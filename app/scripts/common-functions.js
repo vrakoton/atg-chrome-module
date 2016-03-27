@@ -221,3 +221,29 @@ var createFloatingMethodInvocation = function () {
     );
   });
 };
+
+/**
+ * Adds the highlight js CSS and javascript to the page dom in order to 
+ * highlight repository definitions etc...
+ */
+var addHighLightFeature = function() {
+  console.log('appending highlight js');
+  var $head = $("head");
+  var $headLastNode = $head.find("link[rel='stylesheet']:last");
+  var linkElement = "<link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/styles/default.min.css'>";
+  if ($headLastNode.length){
+     $headLastNode.after(linkElement);
+  }
+  else {
+     $head.append(linkElement);
+  }
+
+  var scriptElement = "<script src='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.1.0/highlight.min.js'></script>";
+  $headLastNode = $head.find("script:last");
+  if ($headLastNode.length){
+     $headLastNode.after(scriptElement);
+  }
+  else {
+     $head.append(scriptElement);
+  }
+};

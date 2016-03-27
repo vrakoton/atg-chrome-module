@@ -21,14 +21,17 @@
                 "https://*/dyn/admin/*"
             ],
             "css": [
-                "css/plugin.css"
+                "css/plugin.css",
+                "css/github.css",
+                "css/github-gist.css"
             ],
             "js": [
                 "scripts/jquery-1.11.1.min.js",
                 "scripts/typeahead.js",
                 "scripts/common-functions.js",
                 "scripts/repository.js",
-                "scripts/common-callbacks.js"
+                "scripts/common-callbacks.js",
+                "scripts/highlight.pack.js"
             ],
             "run_at": "document_end",
             "all_frames": false
