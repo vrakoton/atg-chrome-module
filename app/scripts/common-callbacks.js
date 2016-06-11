@@ -44,6 +44,7 @@ $(function() {
   createFloatingHelp();
   // -- add ids to part of the page so that our future manipulations are easier
   decoratePageWithIds();
+  createComponentSearchBox();
   createFloatingMethodInvocation();
 
   // --- add highlight.js

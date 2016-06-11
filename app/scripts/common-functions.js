@@ -223,6 +223,16 @@ var createFloatingMethodInvocation = function () {
 };
 
 /**
+ * adds a component search box to the right hand floating block
+ */
+var createComponentSearchBox = function() {
+  var htmlText = '<form action="/dyn/admin/atg/dynamo/admin/en/cmpn-search.jhtml" method="GET">';
+  htmlText += '<div class="floating-invocation">Component search:<br><br><input name="query" type="text" size="40" placeholder="Type service name")></div>';
+  htmlText += '</form>';
+  $("#right-hand-help").append(htmlText);
+};
+
+/**
  * Adds the highlight js CSS and javascript to the page dom in order to 
  * highlight repository definitions etc...
  */
